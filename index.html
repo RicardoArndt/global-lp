@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oferta Especial de Internet - Global</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        globalDark: '#0C031E',
+                        globalBlue: '#137DFF',
+                        globalPurple: '#8546FF',
+                        globalGreen: '#61CE70',
+                        globalWhite: '#FFFFFF',
+                        globalLightText: '#E5E7EB', // text-gray-200
+                        globalGrayText: '#9CA3AF', // text-gray-400
+                        inputBg: '#1F2937', // gray-800
+                        inputBorder: '#4B5563', // gray-600
+                        inputText: '#F3F4F6', // gray-100
+                        errorRed: '#EF4444', // red-500
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .step { display: none; }
+        .step.active { display: block; }
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .error-message {
+            color: #EF4444; /* errorRed */
+            font-size: 0.875rem; /* text-sm */
+            margin-top: 0.25rem; /* mt-1 */
+            display: block; /* Ensure it takes space */
+            min-height: 1.25rem; /* Reserve space to prevent layout shifts */
+        }
+    </style>
+</head>
+<body class="bg-globalDark text-globalLightText font-sans flex flex-col items-center justify-center min-h-screen p-4">
+
+    <div class="container w-full max-w-md my-8">
+
+        <!-- Etapa 1: Boas-vindas e Primeiro CTA -->
+        <section id="step1" class="step active bg-globalDark p-6 sm:p-8 rounded-xl shadow-xl border border-inputBorder">
+            <img src="https://somosglobal.com.br/wp-content/uploads/2024/12/logo-global.png" alt="Global Logo" class="h-9 mx-auto mb-8">
+            <h2 class="text-2xl sm:text-3xl font-bold text-center text-globalWhite mb-4">Você está a poucos passos de transformar a sua experiência online!</h2>
+            <p class="text-globalLightText text-center mb-6 sm:text-lg">Descubra a ultra velocidade da nossa internet e uma série de benefícios incríveis que preparamos para você.</p>
+            <p class="text-globalGrayText text-center mb-8 text-sm sm:text-base">Clique no botão abaixo e aproveite!</p>
+            <button onclick="showStep('step2')" class="w-full bg-globalBlue hover:bg-blue-500 text-globalWhite font-bold py-3 px-6 rounded-lg text-lg transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-globalBlue focus:ring-opacity-50">Clique Aqui!</button>
+        </section>
+
+        <!-- Etapa 2: Detalhes da Oferta e Segundo CTA -->
+        <section id="step2" class="step bg-globalDark p-6 sm:p-8 rounded-xl shadow-xl border border-inputBorder">
+            <img src="https://somosglobal.com.br/wp-content/uploads/2024/12/logo-global.png" alt="Global Logo" class="h-9 mx-auto mb-8">
+            <h2 class="text-2xl sm:text-3xl font-bold text-center text-globalWhite mb-6">Aproveite a melhor internet com...</h2>
+            
+            <div class="bg-inputBg p-4 sm:p-6 rounded-lg mb-6 border border-inputBorder">
+                <h3 class="text-xl sm:text-2xl font-semibold text-globalGreen mb-2">Velocidade: 1 Giga</h3>
+                <p class="text-3xl sm:text-4xl font-bold text-globalWhite mb-3">Valor mensal: R$ 99,90</p>
+                <ul class="list-disc list-inside text-globalLightText mb-3 space-y-1 sm:text-lg">
+                    <li>Streaming: GloboPlay, Netflix, Disney+</li>
+                    <li>Antivírus: McAfee</li>
+                </ul>
+                <p class="text-globalGrayText sm:text-base">Além da internet você ainda leva serviços adicionais incríveis para compartilhar com toda sua família.</p>
+            </div>
+
+            <button onclick="showStep('step3')" class="w-full bg-globalBlue hover:bg-blue-500 text-globalWhite font-bold py-3 px-6 rounded-lg text-lg transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-globalBlue focus:ring-opacity-50 mb-6">Contrate agora!</button>
+            
+            <div class="text-center">
+                <p class="text-globalLightText mb-3 sm:text-lg">Ficou alguma dúvida?</p>
+                <div class="flex flex-col sm:flex-row justify-center space-y-3 sm:space-y-0 sm:space-x-4">
+                    <button 
+                        class="flex items-center justify-center w-full sm:w-auto bg-globalGreen hover:bg-green-500 text-globalWhite font-semibold py-2 px-4 rounded-lg transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-globalGreen focus:ring-opacity-50"
+                        onclick="window.open('https://w.app/global-financeira', '_blank')"
+                    >
+                        WhatsApp
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Etapa 3: Formulário de Contratação -->
+        <section id="step3" class="step bg-globalDark p-6 sm:p-8 rounded-xl shadow-xl border border-inputBorder">
+            <img src="https://somosglobal.com.br/wp-content/uploads/2024/12/logo-global.png" alt="Global Logo" class="h-9 mx-auto mb-8">
+            <h2 class="text-2xl sm:text-3xl font-bold text-center text-globalWhite mb-6">Complete seus dados para contratar</h2>
+            <form id="contractionForm" class="space-y-4" novalidate>
+                <div>
+                    <label for="name" class="block text-globalLightText text-sm font-bold mb-1">Nome Completo</label>
+                    <input type="text" id="name" name="name" required class="bg-inputBg border border-inputBorder text-inputText text-sm rounded-lg focus:ring-globalBlue focus:border-globalBlue block w-full p-2.5">
+                    <span class="error-message" id="nameError"></span>
+                </div>
+                <div>
+                    <label for="email" class="block text-globalLightText text-sm font-bold mb-1">E-mail</label>
+                    <input type="email" id="email" name="email" required class="bg-inputBg border border-inputBorder text-inputText text-sm rounded-lg focus:ring-globalBlue focus:border-globalBlue block w-full p-2.5">
+                    <span class="error-message" id="emailError"></span>
+                </div>
+                <div>
+                    <label for="cpf" class="block text-globalLightText text-sm font-bold mb-1">CPF</label>
+                    <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" required class="bg-inputBg border border-inputBorder text-inputText text-sm rounded-lg focus:ring-globalBlue focus:border-globalBlue block w-full p-2.5">
+                    <span class="error-message" id="cpfError"></span>
+                </div>
+                <div>
+                    <label for="cardName" class="block text-globalLightText text-sm font-bold mb-1">Nome conforme cartão</label>
+                    <input type="text" id="cardName" name="cardName" required class="bg-inputBg border border-inputBorder text-inputText text-sm rounded-lg focus:ring-globalBlue focus:border-globalBlue block w-full p-2.5">
+                    <span class="error-message" id="cardNameError"></span>
+                </div>
+                <div>
+                    <label for="cardNumber" class="block text-globalLightText text-sm font-bold mb-1">Número do cartão</label>
+                    <input type="text" id="cardNumber" name="cardNumber" placeholder="0000 0000 0000 0000" required class="bg-inputBg border border-inputBorder text-inputText text-sm rounded-lg focus:ring-globalBlue focus:border-globalBlue block w-full p-2.5">
+                    <span class="error-message" id="cardNumberError"></span>
+                </div>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <div class="w-full sm:w-1/2">
+                        <label for="cardExpiry" class="block text-globalLightText text-sm font-bold mb-1">Validade (MM/AA)</label>
+                        <input type="text" id="cardExpiry" name="cardExpiry" placeholder="MM/AA" required class="bg-inputBg border border-inputBorder text-inputText text-sm rounded-lg focus:ring-globalBlue focus:border-globalBlue block w-full p-2.5">
+                        <span class="error-message" id="cardExpiryError"></span>
+                    </div>
+                    <div class="w-full sm:w-1/2">
+                        <label for="cardCvv" class="block text-globalLightText text-sm font-bold mb-1">CVV</label>
+                        <input type="text" id="cardCvv" name="cardCvv" placeholder="123" required class="bg-inputBg border border-inputBorder text-inputText text-sm rounded-lg focus:ring-globalBlue focus:border-globalBlue block w-full p-2.5">
+                        <span class="error-message" id="cardCvvError"></span>
+                    </div>
+                </div>
+                <button 
+                    type="submit" 
+                    class="w-full bg-globalBlue hover:bg-blue-500 text-globalWhite font-bold py-3 px-6 rounded-lg text-lg transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-globalBlue focus:ring-opacity-50 mt-6"
+                >
+                    Confirmar Contratação
+                </button>
+            </form>
+        </section>
+
+        <!-- Etapa 4: Confirmação da Contratação -->
+        <section id="step4" class="step bg-globalDark p-6 sm:p-8 rounded-xl shadow-xl text-center border border-inputBorder">
+            <img src="https://somosglobal.com.br/wp-content/uploads/2024/12/logo-global.png" alt="Global Logo" class="h-9 mx-auto mb-8">
+            <div class="text-globalGreen mb-4">
+                <svg class="w-16 h-16 sm:w-20 sm:h-20 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-bold text-globalWhite mb-3">Contratação Confirmada!</h2>
+            <p class="text-globalLightText mb-6 sm:text-lg">Sua solicitação foi realizada com sucesso. Em breve você receberá um e-mail com os próximos passos.</p>
+            
+            <div class="bg-inputBg p-4 sm:p-6 rounded-lg mb-6 text-left border border-inputBorder">
+                <h3 class="text-lg sm:text-xl font-semibold text-globalWhite mb-3">Resumo do Plano:</h3>
+                <ul class="text-globalLightText space-y-1 sm:text-base">
+                    <li><strong>Velocidade:</strong> 1 Giga</li>
+                    <li><strong>Valor mensal:</strong> R$ 99,90</li>
+                    <li><strong>Streaming:</strong> GloboPlay, Netflix, Disney+</li>
+                    <li><strong>Antivírus:</strong> McAfee</li>
+                </ul>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        function showStep(stepId) {
+            document.querySelectorAll('.step').forEach(step => {
+                step.classList.remove('active');
+            });
+            const nextStep = document.getElementById(stepId);
+            if (nextStep) {
+                nextStep.classList.add('active');
+            }
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        const form = document.getElementById('contractionForm');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const cpfInput = document.getElementById('cpf');
+        const cardNameInput = document.getElementById('cardName');
+        const cardNumberInput = document.getElementById('cardNumber');
+        const cardExpiryInput = document.getElementById('cardExpiry');
+        const cardCvvInput = document.getElementById('cardCvv');
+
+        function showError(inputId, message) {
+            document.getElementById(inputId + 'Error').textContent = message;
+        }
+
+        function clearError(inputId) {
+            document.getElementById(inputId + 'Error').textContent = '';
+        }
+        
+        function validateCPF(cpf) {
+            if(cpf === '' || cpf.length !== 11) return false;
+            if(/^(\d)\1{10}$/.test(cpf)) return false;
+            
+            let sum = 0;
+            for(let i = 0; i < 9; i++) {
+                sum += parseInt(cpf.charAt(i)) * (10 - i);
+            }
+            let rest = 11 - (sum % 11);
+            let digit1 = rest > 9 ? 0 : rest;
+            if(digit1 !== parseInt(cpf.charAt(9))) return false;
+            sum = 0;
+            for(let i = 0; i < 10; i++) {
+                sum += parseInt(cpf.charAt(i)) * (11 - i);
+            }
+            rest = 11 - (sum % 11);
+            let digit2 = rest > 9 ? 0 : rest;
+            if(digit2 !== parseInt(cpf.charAt(10))) return false;
+            
+            return true;
+        }
+
+        if (form) {
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                let isValid = true;
+
+                // Name validation
+                clearError('name');
+                if (nameInput.value.trim() === '') {
+                    showError('name', 'Nome completo é obrigatório.');
+                    isValid = false;
+                } else if (nameInput.value.trim().split(' ').length < 2) {
+                    showError('name', 'Por favor, insira o nome completo.');
+                    isValid = false;
+                }
+
+                // Email validation
+                clearError('email');
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (emailInput.value.trim() === '') {
+                    showError('email', 'E-mail é obrigatório.');
+                    isValid = false;
+                } else if (!emailRegex.test(emailInput.value)) {
+                    showError('email', 'Por favor, insira um e-mail válido.');
+                    isValid = false;
+                }
+
+                // CPF validation
+                clearError('cpf');
+                if (cpfInput.value.trim() === '') {
+                    showError('cpf', 'CPF é obrigatório.');
+                    isValid = false;
+                } else if (!validateCPF(cpfInput.value)) {
+                    showError('cpf', 'CPF inválido.');
+                    isValid = false;
+                }
+
+                // Card Name validation
+                clearError('cardName');
+                if (cardNameInput.value.trim() === '') {
+                    showError('cardName', 'Nome no cartão é obrigatório.');
+                    isValid = false;
+                }
+
+                // Card Number validation
+                clearError('cardNumber');
+                const cardNumberRegex = /^\d{13,19}$/;
+                if (cardNumberInput.value.replace(/\s/g, '') === ''){
+                    showError('cardNumber', 'Número do cartão é obrigatório.');
+                    isValid = false;
+                } else if (!cardNumberRegex.test(cardNumberInput.value.replace(/\s/g, ''))) {
+                    showError('cardNumber', 'Número do cartão inválido.');
+                    isValid = false;
+                }
+
+                // Card Expiry validation
+                clearError('cardExpiry');
+                const cardExpiryRegex = /^(0[1-9]|1[0-2])\/(\d{2})$/;
+                if (cardExpiryInput.value.trim() === ''){
+                    showError('cardExpiry', 'Data de validade é obrigatória.');
+                    isValid = false;
+                } else if (!cardExpiryRegex.test(cardExpiryInput.value)) {
+                    showError('cardExpiry', 'Data de validade inválida (MM/AA).');
+                    isValid = false;
+                } else {
+                    const [month, year] = cardExpiryInput.value.split('/');
+                    const expiryDate = new Date(Number('20' + year), Number(month)); // Month is 0-indexed in JS Date, so month is correct
+                    const currentDate = new Date();
+                    currentDate.setDate(1); // Compare with the first day of the current month
+                    currentDate.setHours(0,0,0,0);
+                    
+                    // Expiry date is the first day of the month *after* the expiry month on card
+                    if (expiryDate < currentDate) {
+                        showError('cardExpiry', 'Cartão expirado.');
+                        isValid = false;
+                    }
+                }
+
+                // Card CVV validation
+                clearError('cardCvv');
+                const cardCvvRegex = /^\d{3,4}$/;
+                if (cardCvvInput.value.trim() === ''){
+                    showError('cardCvv', 'CVV é obrigatório.');
+                    isValid = false;
+                } else if (!cardCvvRegex.test(cardCvvInput.value)) {
+                    showError('cardCvv', 'CVV inválido (3 ou 4 dígitos).');
+                    isValid = false;
+                }
+
+                if (isValid) {
+                    showStep('step4');
+                }
+            });
+        }
+
+        // Clear errors on input for a better UX
+        const inputsToValidate = [nameInput, emailInput, cpfInput, cardNameInput, cardNumberInput, cardExpiryInput, cardCvvInput];
+        inputsToValidate.forEach(input => {
+            if (input) {
+                input.addEventListener('input', () => clearError(input.id));
+            }
+        });
+
+    </script>
+
+</body>
+</html>
