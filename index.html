@@ -62,7 +62,7 @@
             
             <div class="bg-inputBg p-4 sm:p-6 rounded-lg mb-6 border border-inputBorder">
                 <h3 class="text-xl sm:text-2xl font-semibold text-globalGreen mb-2">Velocidade: 1 Giga</h3>
-                <p class="text-3xl sm:text-4xl font-bold text-globalWhite mb-3">Valor mensal: R$ 99,90</p>
+                <p class="text-3xl sm:text-3xl font-bold text-globalWhite mb-3">Valor mensal: R$ 99,90</p>
                 <ul class="list-disc list-inside text-globalLightText mb-3 space-y-1 sm:text-lg">
                     <li>Streaming: GloboPlay, Netflix, Disney+</li>
                     <li>Antivírus: McAfee</li>
@@ -77,7 +77,7 @@
                 <div class="flex flex-col sm:flex-row justify-center space-y-3 sm:space-y-0 sm:space-x-4">
                     <button 
                         class="flex items-center justify-center w-full sm:w-auto bg-globalGreen hover:bg-green-500 text-globalWhite font-semibold py-2 px-4 rounded-lg transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-globalGreen focus:ring-opacity-50"
-                        onclick="window.open('https://w.app/global-financeira', '_blank')"
+                        onclick="showStep('step2-1')"
                     >
                         WhatsApp
                     </button>
@@ -85,6 +85,42 @@
             </div>
         </section>
 
+        <!-- Etapa 2-1: Formulário de contato -->
+        <section id="step2-1" class="step bg-globalDark p-6 sm:p-8 rounded-xl shadow-xl border border-inputBorder relative">
+            <div class="flex justify-between items-center">
+                <img src="https://somosglobal.com.br/wp-content/uploads/2024/12/logo-global.png" alt="Global Logo" class="h-9 mx-auto mb-8">
+            </div>
+            <p class="text-globalLightText text-center mb-6 sm:text-lg">Informe seus dados abaixo que iremos te retornar o mais breve possível</p>
+            
+            <form id="contactForm" class="space-y-4" novalidate>
+                <div>
+                    <label for="nameContact" class="block text-globalLightText text-sm font-bold mb-1">Nome Completo</label>
+                    <input type="text" id="nameContact" name="nameContact" required class="bg-inputBg border border-inputBorder text-inputText text-sm rounded-lg focus:ring-globalBlue focus:border-globalBlue block w-full p-2.5">
+                    <span class="error-message" id="nameContactError"></span>
+                </div>
+                
+                <div>
+                    <label for="phone" class="block text-globalLightText text-sm font-bold mb-1">Telefone</label>
+                    <input type="tel" id="phone" name="phone" placeholder="(00) 00000-0000" required class="bg-inputBg border border-inputBorder text-inputText text-sm rounded-lg focus:ring-globalBlue focus:border-globalBlue block w-full p-2.5">
+                    <span class="error-message" id="phoneError"></span>
+                </div>
+
+                <button 
+                    onclick="showStep('step2')" 
+                    class="w-full outline-2 outline-offset-2 outline-blue-500 hover:bg-blue-500 text-globalWhite font-bold py-3 px-6 rounded-lg text-lg transition duration-300 transform hover:scale-105 focus:ring-2 focus:ring-globalBlue focus:ring-opacity-50 mb-6"
+                >
+                    Voltar
+                </button>
+
+                <button 
+                    type="submit" 
+                    class="w-full bg-globalBlue hover:bg-blue-500 text-globalWhite font-bold py-3 px-6 rounded-lg text-lg transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-globalBlue focus:ring-opacity-50 mt-6"
+                >
+                    Enviar
+                </button>
+            </form>
+        </section>
+        
         <!-- Etapa 3: Formulário de Contratação -->
         <section id="step3" class="step bg-globalDark p-6 sm:p-8 rounded-xl shadow-xl border border-inputBorder">
             <img src="https://somosglobal.com.br/wp-content/uploads/2024/12/logo-global.png" alt="Global Logo" class="h-9 mx-auto mb-8">
@@ -127,12 +163,22 @@
                         <span class="error-message" id="cardCvvError"></span>
                     </div>
                 </div>
-                <button 
-                    type="submit" 
-                    class="w-full bg-globalBlue hover:bg-blue-500 text-globalWhite font-bold py-3 px-6 rounded-lg text-lg transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-globalBlue focus:ring-opacity-50 mt-6"
-                >
-                    Confirmar Contratação
-                </button>
+
+                <div class="flex flex-col">
+                    <button 
+                        onclick="showStep('step2')" 
+                        class="w-full outline-2 outline-offset-2 outline-blue-500 hover:bg-blue-500 text-globalWhite font-bold py-3 px-6 rounded-lg text-lg transition duration-300 transform hover:scale-105 focus:ring-2 focus:ring-globalBlue focus:ring-opacity-50"
+                    >
+                        Voltar
+                    </button>
+    
+                    <button 
+                        type="submit" 
+                        class="w-full bg-globalBlue hover:bg-blue-500 text-globalWhite font-bold py-3 px-6 rounded-lg text-lg transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-globalBlue focus:ring-opacity-50 mt-6"
+                    >
+                        Confirmar Contratação
+                    </button>
+                </div>
             </form>
         </section>
 
@@ -174,8 +220,11 @@
         }
 
         const form = document.getElementById('contractionForm');
+        const contactForm = document.getElementById('contactForm');
         const nameInput = document.getElementById('name');
+        const nameContactInput = document.getElementById('nameContact');
         const emailInput = document.getElementById('email');
+        const phoneInput = document.getElementById('phone');
         const cpfInput = document.getElementById('cpf');
         const cardNameInput = document.getElementById('cardName');
         const cardNumberInput = document.getElementById('cardNumber');
@@ -184,10 +233,12 @@
 
         function showError(inputId, message) {
             document.getElementById(inputId + 'Error').textContent = message;
+            document.getElementById(inputId).classList.add('border-errorRed');
         }
 
         function clearError(inputId) {
             document.getElementById(inputId + 'Error').textContent = '';
+            document.getElementById(inputId).classList.remove('border-errorRed');
         }
         
         function validateCPF(cpf) {
@@ -210,6 +261,30 @@
             if(digit2 !== parseInt(cpf.charAt(10))) return false;
             
             return true;
+        }
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                let isValid = true;
+                
+                // Name validation
+                clearError('nameContact');
+                if (nameContactInput.value.trim() === '') {
+                    showError('nameContact', 'Nome completo é obrigatório.');
+                    isValid = false;
+                }
+
+                // Phone validation
+                clearError('phone');
+                if (phoneInput.value.trim() === '') {
+                    showError('phone', 'Telefone é obrigatório.');
+                    isValid = false;
+                } else if (!phoneInput.value.trim().match(/^\d{2}\d{4,5}\d{4}$/)) {
+                    showError('phone', 'Por favor, insira um número de telefone válido.');
+                    isValid = false;
+                }
+            });
         }
 
         if (form) {
